@@ -1,4 +1,4 @@
-package org.team2679.simulator.simulations.elevator;
+package org.team2679.simulator.elevator;
 
 public class ElevatorEngine {
 
