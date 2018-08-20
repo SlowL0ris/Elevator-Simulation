@@ -1,5 +1,6 @@
 package org.team2679.simulator;
 
+import org.team2679.motion.PID;
 import org.team2679.simulator.elevator.Elevator;
 
 import java.io.File;
@@ -10,6 +11,7 @@ public class Robot {
 
     private static Elevator elevator = Simulation.elevator;
     private static PrintWriter out;
+    private static PID pid;
 
     public static void robotInit(){
         File dump = new File("dump");
@@ -20,35 +22,21 @@ public class Robot {
         }
 
         System.out.println("dump being saved to: " + dump.getAbsolutePath());
+
+        pid = new PID(4, 0, 1);
     }
 
-    private final static double kp = 1;
-    private final static double kd = 1;
-
-    private static double error = 0;
-    private static double lastError = 0;
-    private static double lastTime = 0;
-    private static double goal = 2;
+    private static double goal = 2 ;
 
     public static void autoPeriodic(double time){
         // do stuff with the elevator
         // running in 1hz (1 milliseconds which is impossible in real situations) for 100 simulated seconds
-        error = goal - elevator.getPosition();
-        double elapseTime = time - lastTime;
+        double fix = pid.update(time, elevator.getPosition(), goal);
 
-        double p = error;
-        double d = 0;
-        if(elapseTime != 0) {
-            d = (error - lastError) / elapseTime;
-        }
-
-        lastError = error;
-        lastTime = time;
-
-        elevator.set(kp*p + kd*d);
+        elevator.set(fix);
 
         // write to file
-        out.println(time + ", " + elevator.getPosition() + ", " + kp*p + ", " + kd*d);
+        out.println(time + ", " + elevator.getPosition() + ", " + fix + ", " + fix);
         out.flush();
     }
 

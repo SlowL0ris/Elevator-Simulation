@@ -38,8 +38,8 @@ public class Simulation {
 
             Robot.autoPeriodic(currentTime);
 
-            currentTime += simulationDelta;
             try {
+            currentTime += simulationDelta;
                 Thread.currentThread().sleep((long) (simulationDelta*1000));
             } catch (InterruptedException e) {
                e.printStackTrace();
