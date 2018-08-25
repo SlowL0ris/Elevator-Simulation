@@ -8,9 +8,13 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
     compile group: 'org.reflections', name: 'reflections', version: '0.9.10'
+    implementation 'com.github.Tiger-team-2679:FRC-Logger:v1.0.0'
+    compile group: 'org.freemarker', name: 'freemarker', version: '2.3.14'
+    compile project ('FRC-Web-Dashboard')
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

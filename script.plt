@@ -1,6 +1,6 @@
 set size square
-set xrange [0:25]
-set yrange [-5:5]
+set xrange [0:50]
+set yrange [-3:3]
 set datafile separator ","
 
 plot 'dump' using 1:2 with lines title "position" lw 4, \

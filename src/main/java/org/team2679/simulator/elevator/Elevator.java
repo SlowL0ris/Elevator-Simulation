@@ -18,9 +18,7 @@ public class Elevator {
         return this.engine.getPosition();
     }
 
-    public double getVelocity(){
-        return this.engine.getVelocity();
-    }
+    public double getVelocity() { return this.engine.getVelocity(); }
 
     private void update(double kDt){
         this.engine.simulateTime(kDt);

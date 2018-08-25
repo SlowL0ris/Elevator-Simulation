@@ -23,6 +23,7 @@ public class PID {
 
         double p = error;
         double d = 0;
+        integral += (error + lastError)*elapseTime/2;
         if(elapseTime != 0) {
             d = (error - lastError) / elapseTime;
         }

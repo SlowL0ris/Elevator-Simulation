@@ -1,10 +1,8 @@
 package org.team2679.simulator;
 
+import org.team2679.dashboard.Dashboard;
 import org.team2679.simulator.elevator.Elevator;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.lang.reflect.Method;
 
 public class Simulation {
@@ -12,15 +10,17 @@ public class Simulation {
     public static Elevator elevator;
     private final  static  double simulationTime = 50;
     private final  static  double simulationDelta = 0.02;
+    private static Controller controller;
 
     public static void main(String args[]){
+        Dashboard.INSTANCE.init(3000);
         elevator = new Elevator();
+        controller = new FinishedRobot();
         run();
     }
 
     private static void run(){
-        Robot.robotInit();
-
+        controller.onStart(0);
         double currentTime = 0;
         Method method = null;
         try {
@@ -36,7 +36,7 @@ public class Simulation {
                 e.printStackTrace();
             }
 
-            Robot.autoPeriodic(currentTime);
+            controller.onLoop(currentTime);
 
             try {
             currentTime += simulationDelta;
@@ -45,6 +45,5 @@ public class Simulation {
                e.printStackTrace();
             }
         }
-        Robot.robotDisable();
     }
 }
