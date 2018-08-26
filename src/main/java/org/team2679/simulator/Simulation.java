@@ -1,6 +1,5 @@
 package org.team2679.simulator;
 
-import org.team2679.dashboard.Dashboard;
 import org.team2679.simulator.elevator.Elevator;
 
 import java.lang.reflect.Method;
@@ -13,7 +12,6 @@ public class Simulation {
     private static Controller controller;
 
     public static void main(String args[]){
-        Dashboard.INSTANCE.init(3000);
         elevator = new Elevator();
         controller = new FinishedRobot();
         run();
