@@ -11,4 +11,5 @@ tmp/
 .idea/
 .classpath
 .gradle/
+dump
 gradle/.launch/
