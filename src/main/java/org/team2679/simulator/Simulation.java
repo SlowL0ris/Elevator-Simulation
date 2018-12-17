@@ -13,7 +13,7 @@ public class Simulation {
 
     public static void main(String args[]){
         elevator = new Elevator();
-        controller = new FinishedRobot();
+        controller = new Robot();
         run();
     }
 
