@@ -9,3 +9,7 @@ A simulation I created after I watched [team 971's presentation](https://www.you
 ### Live plotting
 In order to use live plotting I recommend to use [gnuplot](http://gnuplot.info/). I also attached [a script](/script.plt) in order to make everyone's lives easier. 
 
+### TODO
+
+1. use WPILIB sim framework
+2. switch to a dedicated sim library?
